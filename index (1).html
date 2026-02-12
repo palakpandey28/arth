@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTH - Actionable Rural Trade Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #2d5a27;
+            --secondary-green: #4a7c3a;
+            --light-green: #e8f5e9;
+            --accent-green: #81c784;
+            --dark-green: #1b3c16;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        body {
+            background-color: #f9fff8;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+            color: var(--text-light);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .login-btn {
+            background-color: var(--accent-green);
+            color: var(--dark-green);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .login-btn:hover {
+            background-color: #a5d6a7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Introduction Section */
+        .introduction {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--light-green) 0%, #ffffff 100%);
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        .intro-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .welcome-message h2 {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .welcome-hindi {
+            font-size: 2.2rem;
+            color: var(--secondary-green);
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            max-width: 900px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Features Section */
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .photo-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 250px;
+            position: relative;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(45, 90, 39, 0.95);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .photo-overlay h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .photo-overlay p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: 20px;
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-green);
+            outline: none;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-green);
+        }
+
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .crop-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .crop-option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .crop-option:hover {
+            border-color: var(--accent-green);
+        }
+
+        .crop-option.selected {
+            border-color: var(--primary-green);
+            background-color: var(--light-green);
+        }
+
+        .crop-icon {
+            font-size: 2rem;
+            color: var(--secondary-green);
+            margin-bottom: 10px;
+        }
+
+        .unit-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .unit-option {
+            flex: 1;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .unit-option:hover {
+            background-color: #e0e0e0;
+        }
+
+        .unit-option.selected {
+            background-color: var(--accent-green);
+            color: var(--dark-green);
+            font-weight: 600;
+        }
+
+        .location-info {
+            background-color: var(--light-green);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .location-info p {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-info i {
+            color: var(--primary-green);
+        }
+
+        /* Results Section */
+        .results {
+            padding: 60px 0;
+            display: none;
+            background-color: #fafafa;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .results-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .mandi-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .mandi-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .mandi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .mandi-card.best {
+            border: 3px solid var(--accent-green);
+            position: relative;
+        }
+
+        .best-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-green);
+            color: var(--dark-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .mandi-header {
+            background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+            color: white;
+            padding: 20px;
+        }
+
+        .mandi-body {
+            padding: 25px;
+        }
+
+        .mandi-info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profit {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-align: center;
+            padding: 15px;
+            background-color: var(--light-green);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .distance {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .welcome-message h2 {
+                font-size: 2.2rem;
+            }
+            
+            .welcome-hindi {
+                font-size: 1.8rem;
+            }
+            
+            .crop-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-item {
+                height: 200px;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">🌿</div>
+                <div class="logo-text">
+                    <h1>ARTH</h1>
+                    <p>Actionable Rural Trade Hub</p>
+                </div>
+            </div>
+            <button class="login-btn" id="openModalBtn">
+                <i class="fas fa-search"></i> Find Mandi Prices
+            </button>
+        </div>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <div class="container intro-content">
+            <div class="welcome-message">
+                <h2>Welcome to ARTH</h2>
+                <div class="welcome-hindi">ARTH में आपका स्वागत है</div>
+                <p class="intro-text">
+                    <strong>Empowering Farmers with Real-Time Market Intelligence</strong><br><br>
+                    ARTH connects you directly with mandi prices across India. Get instant access to live commodity prices 
+                    based on <strong>your state location</strong>, compare markets, and make informed decisions to maximize 
+                    your profits. No middlemen, just transparent pricing and direct market access powered by Government of India data.
+                </p>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">2500+</div>
+                    <div class="stat-label">Mandis Covered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">28</div>
+                    <div class="stat-label">States & UTs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">Commodities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Daily</div>
+                    <div class="stat-label">Price Updates</div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>State-Based Prices</h3>
+                    <p>Automatically detect your location and show mandi prices <strong>only in your state</strong> for relevant results</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Best Price Discovery</h3>
+                    <p>Compare prices across multiple mandis in your state and find the best rates instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Profit Calculator</h3>
+                    <p>Calculate your net profit after transport costs for each mandi automatically</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Government Data</h3>
+                    <p>100% accurate data from official Government of India API - No fake prices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access ARTH anytime, anywhere on your smartphone for on-the-go market insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Direct Market Access</h3>
+                    <p>Eliminate middlemen and connect directly with mandis for fair and transparent pricing</p>
+                </div>
+            </div>
+            
+            <!-- Photo Gallery -->
+            <div class="photo-gallery">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Farmers in field">
+                    <div class="photo-overlay">
+                        <h3>Direct Market Access</h3>
+                        <p>ARTH connects farmers directly to mandis, eliminating middlemen and ensuring fair prices</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fresh fruits">
+                    <div class="photo-overlay">
+                        <h3>Fresh Produce Management</h3>
+                        <p>ARTH helps in timely sale of fresh produce to get maximum value</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Vegetables market">
+                    <div class="photo-overlay">
+                        <h3>Market Price Transparency</h3>
+                        <p>ARTH provides real-time mandi prices for better decision making</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Happy farmer">
+                    <div class="photo-overlay">
+                        <h3>Farmer Empowerment</h3>
+                        <p>ARTH empowers farmers with information and direct market access</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Wheat harvest">
+                    <div class="photo-overlay">
+                        <h3>Crop Optimization</h3>
+                        <p>ARTH helps in planning harvest timing based on market demand</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Tomatoes">
+                    <div class="photo-overlay">
+                        <h3>Quality Assessment</h3>
+                        <p>ARTH provides guidance on crop quality standards for better pricing</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1566281796817-93bc94d7dbd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Vegetable harvest">
+                    <div class="photo-overlay">
+                        <h3>Harvest Planning</h3>
+                        <p>ARTH assists in planning harvest based on market conditions</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Farm landscape">
+                    <div class="photo-overlay">
+                        <h3>Agricultural Planning</h3>
+                        <p>ARTH provides market insights for better crop planning</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1595855759920-86582396756a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Indian farmer">
+                    <div class="photo-overlay">
+                        <h3>Community Building</h3>
+                        <p>ARTH connects farmers to build a stronger agricultural community</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fresh produce">
+                    <div class="photo-overlay">
+                        <h3>Supply Chain Efficiency</h3>
+                        <p>ARTH streamlines the supply chain from farm to market</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mango harvest">
+                    <div class="photo-overlay">
+                        <h3>Seasonal Crop Management</h3>
+                        <p>ARTH helps in managing seasonal crops for optimal returns</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Farmers market">
+                    <div class="photo-overlay">
+                        <h3>Market Intelligence</h3>
+                        <p>ARTH provides valuable market intelligence for farmers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-search"></i> Find Best Mandi Prices</h2>
+            </div>
+            <div class="modal-body">
+                <form id="searchForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Detect Your State Location</label>
+                        <button type="button" class="btn btn-primary" id="getLocationBtn" style="width: 100%;">
+                            <i class="fas fa-location-arrow"></i> Detect My Location
+                        </button>
+                        <div id="locationDisplay" class="location-info" style="display: none;">
+                            <p><i class="fas fa-check-circle"></i> <span id="locationText">Location detected</span></p>
+                            <p><i class="fas fa-map-pin"></i> <strong>State:</strong> <span id="stateText"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Crop Type</label>
+                        <div class="crop-selection">
+                            <div class="crop-option selected" data-crop="vegetable">
+                                <div class="crop-icon"><i class="fas fa-carrot"></i></div>
+                                <h3>Vegetables</h3>
+                            </div>
+                            <div class="crop-option" data-crop="fruit">
+                                <div class="crop-icon"><i class="fas fa-apple-alt"></i></div>
+                                <h3>Fruits</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cropName"><i class="fas fa-leaf"></i> Enter Crop Name</label>
+                        <input type="text" id="cropName" class="form-control" placeholder="e.g., Potato, Tomato, Onion, Wheat" required>
+                        <small style="color: #666; font-size: 0.85rem; margin-top: 5px; display: block;">
+                            💡 Popular: Potato, Tomato, Onion, Wheat, Rice, Maize, Cotton, Soybean
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Quantity Unit</label>
+                        <div class="unit-options">
+                            <div class="unit-option selected" data-unit="quintal">
+                                <i class="fas fa-weight-hanging"></i> Quintal
+                            </div>
+                            <div class="unit-option" data-unit="kg">
+                                <i class="fas fa-balance-scale"></i> Kilogram
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Enter Quantity</label>
+                        <input type="number" id="quantity" class="form-control" placeholder="Enter quantity" min="1" step="0.1" required>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" id="closeModalBtn">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Find Prices
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <section class="results" id="resultsSection">
+        <div class="container">
+            <div class="results-header">
+                <h2><i class="fas fa-chart-line"></i> Real-Time Mandi Prices in Your State</h2>
+                <p id="resultsSubtitle">Showing best prices in your state</p>
+            </div>
+            
+            <div class="mandi-cards" id="mandiCards">
+                <!-- Mandi cards will be generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.5rem; margin-bottom: 10px;">🌿 <strong>ARTH BY YUGMA</strong></p>
+            <p>Actionable Rural Trade Hub</p>
+            <p style="margin-top: 15px;">Connecting Farmers to Markets, Empowering Rural India</p>
+            <p style="margin-top: 10px;">
+                📧 <a href="mailto:arthforgood@gmail.com" style="color: #81c784; text-decoration: none;">arthforgood@gmail.com</a> | 
+                📞 <a href="tel:9201356301" style="color: #81c784; text-decoration: none;">9201356301</a>, 
+                <a href="tel:8305420946" style="color: #81c784; text-decoration: none;">8305420946</a>
+            </p>
+            <div class="copyright">
+                &copy; 2026 ARTH BY YUGMA. All rights reserved. | Powered by Government of India Data
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // API Configuration
+        const API_KEY = "579b464db66ec23bdd000001c778940ddf24461940fac0e167973bf7";
+        const BASE_URL = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070";
+
+        // User data
+        let userLocation = {
+            latitude: null,
+            longitude: null,
+            state: null,
+            district: null
+        };
+
+        let selectedCrop = 'vegetable';
+        let selectedUnit = 'quintal';
+
+        // DOM Elements
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const searchModal = document.getElementById('searchModal');
+        const searchForm = document.getElementById('searchForm');
+        const getLocationBtn = document.getElementById('getLocationBtn');
+        const locationDisplay = document.getElementById('locationDisplay');
+        const locationText = document.getElementById('locationText');
+        const stateText = document.getElementById('stateText');
+        const resultsSection = document.getElementById('resultsSection');
+        const mandiCards = document.getElementById('mandiCards');
+        const resultsSubtitle = document.getElementById('resultsSubtitle');
+
+        // Open modal
+        openModalBtn.addEventListener('click', () => {
+            searchModal.style.display = 'flex';
+        });
+
+        // Close modal
+        closeModalBtn.addEventListener('click', () => {
+            searchModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === searchModal) {
+                searchModal.style.display = 'none';
+            }
+        });
+
+        // Crop selection
+        const cropOptions = document.querySelectorAll('.crop-option');
+        cropOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                cropOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedCrop = option.dataset.crop;
+            });
+        });
+
+        // Unit selection
+        const unitOptions = document.querySelectorAll('.unit-option');
+        unitOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                unitOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedUnit = option.dataset.unit;
+            });
+        });
+
+        // Get user location with STATE detection
+        getLocationBtn.addEventListener('click', async () => {
+            if (!navigator.geolocation) {
+                alert('Geolocation is not supported by your browser');
+                return;
+            }
+
+            getLocationBtn.innerHTML = '<span class="loading-spinner"></span> Getting your state...';
+            getLocationBtn.disabled = true;
+
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    userLocation.latitude = position.coords.latitude;
+                    userLocation.longitude = position.coords.longitude;
+
+                    // Get location details using reverse geocoding
+                    try {
+                        const response = await fetch(
+                            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${userLocation.latitude}&lon=${userLocation.longitude}`
+                        );
+                        const data = await response.json();
+                        
+                        userLocation.state = data.address.state || 'Unknown';
+                        userLocation.district = data.address.state_district || data.address.county || 'Unknown';
+
+                        locationText.textContent = '✅ Your location detected successfully!';
+                        stateText.textContent = userLocation.state;
+                        locationDisplay.style.display = 'block';
+                        
+                        getLocationBtn.innerHTML = '<i class="fas fa-check"></i> Location Detected: ' + userLocation.state;
+                        getLocationBtn.style.backgroundColor = '#81c784';
+
+                        console.log('✅ Detected State:', userLocation.state);
+                    } catch (error) {
+                        console.error('❌ Error getting location details:', error);
+                        alert('Could not determine your state. Please try again.');
+                        getLocationBtn.innerHTML = '<i class="fas fa-location-arrow"></i> Detect My Location';
+                        getLocationBtn.disabled = false;
+                    }
+                },
+                (error) => {
+                    alert('⚠️ Unable to get your location. Please enable location services in your browser.');
+                    getLocationBtn.innerHTML = '<i class="fas fa-location-arrow"></i> Detect My Location';
+                    getLocationBtn.disabled = false;
+                }
+            );
+        });
+
+        // Form submission
+        searchForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!userLocation.state || userLocation.state === 'Unknown') {
+                alert('⚠️ Please detect your location first to see prices in your state!');
+                return;
+            }
+
+            const cropName = document.getElementById('cropName').value.trim();
+            const quantity = parseFloat(document.getElementById('quantity').value);
+
+            if (!cropName || !quantity) {
+                alert('⚠️ Please fill all fields!');
+                return;
+            }
+
+            // Close modal
+            searchModal.style.display = 'none';
+
+            // Fetch and display results
+            await fetchMandiPrices(cropName, quantity);
+        });
+
+        // Fetch mandi prices from government API (STATE-BASED FILTERING)
+        async function fetchMandiPrices(cropName, quantity) {
+            mandiCards.innerHTML = `
+                <div style="text-align: center; padding: 40px; grid-column: 1/-1;">
+                    <div class="loading-spinner" style="width: 50px; height: 50px; border-width: 6px; border-color: #2d5a27; border-top-color: #81c784;"></div>
+                    <p style="margin-top: 20px; font-size: 1.3rem; color: var(--primary-green);">
+                        <strong>🔍 Fetching real-time prices from ${userLocation.state}...</strong>
+                    </p>
+                    <p style="color: #666; margin-top: 10px;">Please wait while we search ${cropName} prices in your state</p>
+                </div>
+            `;
+            resultsSection.style.display = 'block';
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+            try {
+                // Construct API URL with STATE filter - THIS IS THE KEY FEATURE
+                let url = `${BASE_URL}?api-key=${API_KEY}&format=json&limit=100`;
+                
+                // 🎯 Add STATE filter to show only user's state data
+                url += `&filters[state]=${encodeURIComponent(userLocation.state)}`;
+                
+                // Add commodity filter
+                url += `&filters[commodity]=${encodeURIComponent(cropName)}`;
+
+                console.log('🌐 Fetching from:', url);
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                console.log('📊 API Response:', data);
+
+                if (!data.records || data.records.length === 0) {
+                    mandiCards.innerHTML = `
+                        <div style="text-align: center; padding: 40px; grid-column: 1/-1;">
+                            <i class="fas fa-exclamation-circle" style="font-size: 3.5rem; color: #ff9800; margin-bottom: 20px;"></i>
+                            <h3>❌ No data found for "${cropName}" in ${userLocation.state}</h3>
+                            <p style="margin: 20px 0; font-size: 1.1rem;">Try searching for popular crops in your state:</p>
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                                <p style="margin: 10px 0;"><strong>🥔 Vegetables:</strong> Potato, Tomato, Onion, Cabbage, Cauliflower, Brinjal</p>
+                                <p style="margin: 10px 0;"><strong>🌾 Grains:</strong> Wheat, Rice, Maize, Bajra, Jowar</p>
+                                <p style="margin: 10px 0;"><strong>🌰 Pulses:</strong> Tur (Arhar), Moong, Urad, Masoor, Chana</p>
+                                <p style="margin: 10px 0;"><strong>🍎 Fruits:</strong> Apple, Banana, Mango, Orange, Guava</p>
+                            </div>
+                            <button class="btn btn-primary" onclick="document.getElementById('searchModal').style.display='flex'" style="margin-top: 20px; padding: 15px 30px; font-size: 1.1rem;">
+                                <i class="fas fa-search"></i> Search Again
+                            </button>
+                        </div>
+                    `;
+                    return;
+                }
+
+                displayResults(data.records, cropName, quantity);
+            } catch (error) {
+                console.error('❌ Error fetching data:', error);
+                mandiCards.innerHTML = `
+                    <div style="text-align: center; padding: 40px; grid-column: 1/-1;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3.5rem; color: #f44336; margin-bottom: 20px;"></i>
+                        <h3>⚠️ Error loading mandi prices</h3>
+                        <p style="margin: 15px 0;">Please check your internet connection and try again.</p>
+                        <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 20px; padding: 15px 30px;">
+                            <i class="fas fa-redo"></i> Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Display results with state info
+        function displayResults(records, cropName, quantity) {
+            mandiCards.innerHTML = '';
+
+            // Update subtitle with state-specific info
+            resultsSubtitle.innerHTML = `
+                <strong>📍 Found ${records.length} markets for ${cropName} in ${userLocation.state}</strong><br>
+                Showing prices for ${quantity} ${selectedUnit}
+            `;
+
+            // Sort by modal price (highest first)
+            records.sort((a, b) => parseFloat(b.modal_price) - parseFloat(a.modal_price));
+
+            // Display top results
+            const topRecords = records.slice(0, 12);
+            
+            topRecords.forEach((record, index) => {
+                const modalPrice = parseFloat(record.modal_price) || 0;
+                const minPrice = parseFloat(record.min_price) || 0;
+                const maxPrice = parseFloat(record.max_price) || 0;
+                
+                // Calculate revenue and estimated profit
+                const transportCostBase = 150;
+                const transportCost = transportCostBase + (index * 30);
+                const revenue = modalPrice * quantity;
+                const profit = revenue - transportCost;
+
+                const card = document.createElement('div');
+                card.className = `mandi-card ${index === 0 ? 'best' : ''}`;
+                
+                card.innerHTML = `
+                    ${index === 0 ? '<div class="best-tag">🏆 Best Price</div>' : ''}
+                    <div class="mandi-header">
+                        <h3>${record.market}</h3>
+                        <p class="distance">
+                            <i class="fas fa-map-marker-alt"></i> ${record.district}, ${record.state}
+                        </p>
+                    </div>
+                    <div class="mandi-body">
+                        <div class="mandi-info">
+                            <div class="mandi-info-item">
+                                <span><i class="fas fa-leaf"></i> <strong>Commodity:</strong></span>
+                                <strong>${record.commodity}</strong>
+                            </div>
+                            <div class="mandi-info-item">
+                                <span>Modal Price/${selectedUnit}:</span>
+                                <strong style="color: var(--primary-green); font-size: 1.3rem;">₹${modalPrice.toFixed(2)}</strong>
+                            </div>
+                            <div class="mandi-info-item">
+                                <span>Price Range:</span>
+                                <strong>₹${minPrice.toFixed(2)} - ₹${maxPrice.toFixed(2)}</strong>
+                            </div>
+                            <div class="mandi-info-item">
+                                <span><i class="fas fa-calendar"></i> Arrival Date:</span>
+                                <strong>${record.arrival_date || 'Recent'}</strong>
+                            </div>
+                            <div class="mandi-info-item">
+                                <span><i class="fas fa-money-bill-wave"></i> Total Revenue:</span>
+                                <strong style="color: #4a7c3a; font-size: 1.1rem;">₹${revenue.toFixed(2)}</strong>
+                            </div>
+                            <div class="mandi-info-item">
+                                <span><i class="fas fa-truck"></i> Est. Transport:</span>
+                                <strong>₹${transportCost}</strong>
+                            </div>
+                        </div>
+                        <div class="profit">
+                            💰 Net Profit: ₹${profit.toFixed(2)}
+                        </div>
+                    </div>
+                `;
+                
+                mandiCards.appendChild(card);
+            });
+
+            // Add back to search button
+            const actionDiv = document.createElement('div');
+            actionDiv.style.cssText = 'grid-column: 1/-1; text-align: center; margin-top: 30px;';
+            actionDiv.innerHTML = `
+                <button class="btn btn-primary" onclick="document.getElementById('searchModal').style.display='flex'" style="padding: 15px 40px; font-size: 1.1rem;">
+                    <i class="fas fa-search"></i> Search Another Crop
+                </button>
+            `;
+            mandiCards.appendChild(actionDiv);
+        }
+    </script>
+</body>
+</html>
